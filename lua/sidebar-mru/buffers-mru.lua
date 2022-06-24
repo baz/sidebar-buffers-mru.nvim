@@ -70,8 +70,7 @@ local function is_valid_buffer(buffer)
     if is_valid then
         local is_ignored = is_ignored(buffer)
         local is_listed = vim.fn.getbufinfo(buffer)[1].listed == 1
-        local is_loaded = vim.fn.getbufinfo(buffer)[1].loaded == 1
-        local is_included = is_listed or is_loaded
+        local is_included = is_listed
         local winnr = vim.fn.bufwinnr(buffer)
         local wininfo = vim.fn.getwininfo()
         local wintype = vim.fn.win_gettype()
