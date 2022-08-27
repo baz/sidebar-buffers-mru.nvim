@@ -74,9 +74,10 @@ local function is_valid_buffer(buffer)
 
         -- Determine if this is a scratch buffer that should be skipped
         local is_nofile = vim.fn.getbufvar(buffer, '&buftype') == 'nofile'
+        local is_help = vim.fn.getbufvar(buffer, '&buftype') == 'help'
         local is_hidden = vim.fn.getbufvar(buffer, '&bufhidden') == 'hide'
         local is_noswap = vim.fn.getbufvar(buffer, '&swapfile') == 0
-        local is_scratch = is_nofile and is_hidden and is_noswap
+        local is_scratch = (is_nofile and is_hidden and is_noswap) or is_help
 
         local is_included = (is_listed or is_loaded) and not is_scratch
         local winnr = vim.fn.bufwinnr(buffer)
