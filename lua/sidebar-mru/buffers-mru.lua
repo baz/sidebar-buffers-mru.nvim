@@ -321,6 +321,11 @@ local function cycle_previous()
     switch_to_first_mru()
 end
 
+local function cycle_previous_close_current()
+    cycle_previous()
+    vim.cmd('bd#')
+end
+
 local function cycle_next()
     -- Remove last entry
     local last = buffers_mru[#buffers_mru]
@@ -374,6 +379,9 @@ return {
     end,
     cycle_previous = function(_)
         cycle_previous()
+    end,
+    cycle_previous_close_current = function(_)
+        cycle_previous_close_current()
     end,
     highlights = {
         groups = {},
