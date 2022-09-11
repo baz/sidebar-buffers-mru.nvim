@@ -324,6 +324,7 @@ end
 local function cycle_previous_close_current()
     cycle_previous()
     vim.cmd('bd#')
+    integrity_check()
 end
 
 local function cycle_next()
